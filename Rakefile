@@ -71,6 +71,16 @@ MRuby::GemBox.new do |conf|
 
   # Use extensional Kernel module
   conf.gem :core => "mruby-kernel-ext"
+  
+  # WvD ADDITION: Use error module
+  conf.gem :core => "mruby-error"
+  
+  # WvD ADDITION: Use eval module
+  conf.gem :core => "mruby-eval"
+  
+  # WvD ADDITION: Use IO module
+  conf.gem :mgem => "mruby-io"
+  
 end
 __EOF__
   end
