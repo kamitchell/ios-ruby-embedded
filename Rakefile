@@ -78,6 +78,9 @@ MRuby::GemBox.new do |conf|
   # WvD ADDITION: Use eval module
   conf.gem :core => "mruby-eval"
   
+  # WvD ADDITION: Use errno module
+  conf.gem :mgem => "mruby-errno"
+  
   # WvD ADDITION: Use IO module
   conf.gem :mgem => "mruby-io"
   
