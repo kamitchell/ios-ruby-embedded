@@ -100,6 +100,27 @@ MRuby::Build.new do |conf|
   toolchain :clang
 
   conf.gembox 'default'
+
+  # WvD ADDITION: Use error module
+  conf.gem :core => "mruby-error"
+  
+  # WvD ADDITION: Use eval module
+  conf.gem :core => "mruby-eval"
+  
+  # WvD ADDITION: Use errno module
+  conf.gem :mgem => "mruby-errno"
+  
+  # WvD ADDITION: Use IO module
+  conf.gem :mgem => "mruby-io"
+  
+  # WvD ADDITION: Use pack module
+  conf.gem :github => 'iij/mruby-pack'
+  
+  # WvD ADDITION: Use sleep module
+  conf.gem :github => 'matsumotory/mruby-sleep'
+  
+  # WvD ADDITION: Use marshal module
+  conf.gem :github => "WaveformDelta/mruby-marshal", :branch => "master"
 end
 
 SIM_SYSROOT="#{SIMSDKPATH}"
