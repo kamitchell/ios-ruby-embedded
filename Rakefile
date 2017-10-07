@@ -72,6 +72,9 @@ MRuby::GemBox.new do |conf|
   # Use extensional Kernel module
   conf.gem :core => "mruby-kernel-ext"
   
+  # WvD ADDITION: Use extensional Class module
+  conf.gem :core => "mruby-class-ext"
+  
   # WvD ADDITION: Use error module
   conf.gem :core => "mruby-error"
   
@@ -84,9 +87,15 @@ MRuby::GemBox.new do |conf|
   # WvD ADDITION: Use IO module
   conf.gem :mgem => "mruby-io"
   
+  # WvD ADDITION: Use pack module
+  conf.gem :github => 'iij/mruby-pack'
+  
+  # WvD ADDITION: Use sleep module
+  conf.gem :github => 'matsumotory/mruby-sleep'
+  
   # WvD ADDITION: Use marshal module
   conf.gem :github => "WaveformDelta/mruby-marshal", :branch => "master"
-  
+ 
 end
 __EOF__
   end
