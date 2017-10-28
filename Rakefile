@@ -142,12 +142,12 @@ MRuby::CrossBuild.new('ios-simulator') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch i386 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cc.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch i386 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.cxx do |cxx|
     cxx.command = 'xcrun'
-    cxx.flags = %W(-sdk iphoneos clang -x c++ -miphoneos-version-min=5.0 -arch i386 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -miphoneos-version-min=5.0 -arch i386 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
@@ -163,12 +163,12 @@ MRuby::CrossBuild.new('ios-simulator-x86_64') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch x86_64 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cc.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch x86_64 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.cxx do |cxx|
     cxx.command = 'xcrun'
-    cxx.flags = %W(-sdk iphoneos clang -x c++ -miphoneos-version-min=5.0 -arch x86_64 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -miphoneos-version-min=5.0 -arch x86_64 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
@@ -184,12 +184,12 @@ MRuby::CrossBuild.new('ios-armv7') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -arch armv7 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cc.flags = %W(-sdk iphoneos clang -arch armv7 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.cxx do |cxx|
     cxx.command = 'xcrun'
-    cxx.flags = %W(-sdk iphoneos clang -x c++ -arch armv7 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -arch armv7 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
@@ -205,12 +205,12 @@ MRuby::CrossBuild.new('ios-armv7s') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -arch armv7s -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cc.flags = %W(-sdk iphoneos clang -arch armv7s -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.cxx do |cxx|
     cxx.command = 'xcrun'
-    cxx.flags = %W(-sdk iphoneos clang -x c++ -arch armv7s -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -arch armv7s -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
@@ -226,12 +226,12 @@ MRuby::CrossBuild.new('ios-arm64') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -arch arm64 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cc.flags = %W(-sdk iphoneos clang -arch arm64 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.cxx do |cxx|
     cxx.command = 'xcrun'
-    cxx.flags = %W(-sdk iphoneos clang -x c++ -arch arm64 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fembed-bitcode-marker -Werror-implicit-function-declaration)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -arch arm64 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
