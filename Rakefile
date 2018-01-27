@@ -71,6 +71,31 @@ MRuby::GemBox.new do |conf|
 
   # Use extensional Kernel module
   conf.gem :core => "mruby-kernel-ext"
+  
+  # WvD ADDITION: Use extensional Class module
+  conf.gem :core => "mruby-class-ext"
+  
+  # WvD ADDITION: Use error module
+  conf.gem :core => "mruby-error"
+  
+  # WvD ADDITION: Use eval module
+  conf.gem :core => "mruby-eval"
+  
+  # WvD ADDITION: Use errno module
+  conf.gem :mgem => "mruby-errno"
+  
+  # WvD ADDITION: Use IO module
+  conf.gem :mgem => "mruby-io"
+  
+  # WvD ADDITION: Use pack module
+  conf.gem :github => 'iij/mruby-pack'
+  
+  # WvD ADDITION: Use sleep module
+  conf.gem :github => 'matsumotory/mruby-sleep'
+  
+  # WvD ADDITION: Use marshal module
+  conf.gem :github => "WaveformDelta/mruby-marshal", :branch => "master"
+ 
 end
 __EOF__
   end
@@ -83,7 +108,31 @@ __EOF__
 MRuby::Build.new do |conf|
   toolchain :clang
 
+  conf.cc.defines = %w(MRB_INTEGER_DIVISION)
+  conf.cxx.defines = %w(MRB_INTEGER_DIVISION)
+  
   conf.gembox 'default'
+
+  # WvD ADDITION: Use error module
+  conf.gem :core => "mruby-error"
+  
+  # WvD ADDITION: Use eval module
+  conf.gem :core => "mruby-eval"
+  
+  # WvD ADDITION: Use errno module
+  conf.gem :mgem => "mruby-errno"
+  
+  # WvD ADDITION: Use IO module
+  conf.gem :mgem => "mruby-io"
+  
+  # WvD ADDITION: Use pack module
+  conf.gem :github => 'iij/mruby-pack'
+  
+  # WvD ADDITION: Use sleep module
+  conf.gem :github => 'matsumotory/mruby-sleep'
+  
+  # WvD ADDITION: Use marshal module
+  conf.gem :github => "WaveformDelta/mruby-marshal", :branch => "master"
 end
 
 SIM_SYSROOT="#{SIMSDKPATH}"
@@ -96,12 +145,19 @@ MRuby::CrossBuild.new('ios-simulator') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch i386 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -Werror-implicit-function-declaration)
+    cc.defines = %w(MRB_INTEGER_DIVISION)
+    cc.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch i386 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
+  end
+
+  conf.cxx do |cxx|
+    cxx.command = 'xcrun'
+    cxx.defines = %w(MRB_INTEGER_DIVISION)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -miphoneos-version-min=5.0 -arch i386 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
     linker.command = 'xcrun'
-    linker.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch i386 -isysroot \#{SIM_SYSROOT})
+    linker.flags = %W(-sdk iphoneos clang -x c++ -miphoneos-version-min=5.0 -arch i386 -isysroot \#{SIM_SYSROOT})
   end
 end
 
@@ -112,12 +168,19 @@ MRuby::CrossBuild.new('ios-simulator-x86_64') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch x86_64 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -Werror-implicit-function-declaration)
+    cc.defines = %w(MRB_INTEGER_DIVISION)
+    cc.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch x86_64 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
+  end
+
+  conf.cxx do |cxx|
+    cxx.command = 'xcrun'
+    cxx.defines = %w(MRB_INTEGER_DIVISION)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -miphoneos-version-min=5.0 -arch x86_64 -isysroot \#{SIM_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
     linker.command = 'xcrun'
-    linker.flags = %W(-sdk iphoneos clang -miphoneos-version-min=5.0 -arch x86_64 -isysroot \#{SIM_SYSROOT})
+    linker.flags = %W(-sdk iphoneos clang -x c++ -miphoneos-version-min=5.0 -arch x86_64 -isysroot \#{SIM_SYSROOT})
   end
 end
 
@@ -128,12 +191,19 @@ MRuby::CrossBuild.new('ios-armv7') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -arch armv7 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -Werror-implicit-function-declaration)
+    cc.defines = %w(MRB_INTEGER_DIVISION)
+    cc.flags = %W(-sdk iphoneos clang -arch armv7 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
+  end
+
+  conf.cxx do |cxx|
+    cxx.command = 'xcrun'
+    cxx.defines = %w(MRB_INTEGER_DIVISION)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -arch armv7 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
     linker.command = 'xcrun'
-    linker.flags = %W(-sdk iphoneos clang -arch armv7 -isysroot \#{DEVICE_SYSROOT})
+    linker.flags = %W(-sdk iphoneos clang -x c++ -arch armv7 -isysroot \#{DEVICE_SYSROOT})
   end
 end
 
@@ -144,12 +214,19 @@ MRuby::CrossBuild.new('ios-armv7s') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -arch armv7s -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -Werror-implicit-function-declaration)
+    cc.defines = %w(MRB_INTEGER_DIVISION)
+    cc.flags = %W(-sdk iphoneos clang -arch armv7s -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
+  end
+
+  conf.cxx do |cxx|
+    cxx.command = 'xcrun'
+    cxx.defines = %w(MRB_INTEGER_DIVISION)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -arch armv7s -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
     linker.command = 'xcrun'
-    linker.flags = %W(-sdk iphoneos clang -arch armv7s -isysroot \#{DEVICE_SYSROOT})
+    linker.flags = %W(-sdk iphoneos clang -x c++ -arch armv7s -isysroot \#{DEVICE_SYSROOT})
   end
 end
 
@@ -160,12 +237,19 @@ MRuby::CrossBuild.new('ios-arm64') do |conf|
 
   conf.cc do |cc|
     cc.command = 'xcrun'
-    cc.flags = %W(-sdk iphoneos clang -arch arm64 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -Werror-implicit-function-declaration)
+    cc.defines = %w(MRB_INTEGER_DIVISION)
+    cc.flags = %W(-sdk iphoneos clang -arch arm64 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fexceptions -fembed-bitcode -Werror-implicit-function-declaration)
+  end
+
+  conf.cxx do |cxx|
+    cxx.command = 'xcrun'
+    cxx.defines = %w(MRB_INTEGER_DIVISION)
+    cxx.flags = %W(-sdk iphoneos clang -x c++ -arch arm64 -isysroot \#{DEVICE_SYSROOT} -g -O3 -Wall -fembed-bitcode -Werror-implicit-function-declaration)
   end
 
   conf.linker do |linker|
     linker.command = 'xcrun'
-    linker.flags = %W(-sdk iphoneos clang -arch arm64 -isysroot \#{DEVICE_SYSROOT})
+    linker.flags = %W(-sdk iphoneos clang -x c++ -arch arm64 -isysroot \#{DEVICE_SYSROOT})
   end
 end
 __EOF__
@@ -218,13 +302,6 @@ end
 
 task :mruby_headers => [:build_mruby, "MRuby.framework/Versions/1.0.0/Headers"] do
   FileUtils.cp_r "mruby/include/.", "MRuby.framework/Versions/Current/Headers/"
-
-  sh "sed -i '' 's/mruby\\.h/..\\/mruby\\.h/g' MRuby.framework/Versions/Current/Headers/mruby/*"
-  sh "sed -i '' 's/mruby\\/khash\\.h/..\\/mruby\\/khash\\.h/g' MRuby.framework/Versions/Current/Headers/mruby/*"
-  sh "sed -i '' 's/mruby\\/irep\\.h/..\\/mruby\\/irep\\.h/g' MRuby.framework/Versions/Current/Headers/mruby/proc.h"
-  sh "sed -i '' 's/mruby\\/irep\\.h/..\\/mruby\\/irep\\.h/g' MRuby.framework/Versions/Current/Headers/mruby/dump.h"
-  sh "sed -i '' 's/mruby\\/object\\.h/..\\/mruby\\/object\\.h/g' MRuby.framework/Versions/Current/Headers/mruby/value.h"
-  sh "sed -i '' 's/mruby\\/compile\\.h/..\\/mruby\\/compile\\.h/g' MRuby.framework/Versions/Current/Headers/mruby/irep.h"
 end
  
 task :all => [:verify_sysroot, "bin/mirb", "bin/mrbc", "bin/mruby", "MRuby.framework/Versions/Current/MRuby", :mruby_headers]
