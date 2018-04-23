@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0A199E74208D813A00D4CA90 /* error.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0A199E72208D813A00D4CA90 /* error.cpp */; };
 		0A199E75208D813A00D4CA90 /* vm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0A199E73208D813A00D4CA90 /* vm.cpp */; };
+		0A199E7B208D830500D4CA90 /* mrbc.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A199E7A208D830500D4CA90 /* mrbc.c */; };
+		0A199E87208D835F00D4CA90 /* mrbc.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A199E7A208D830500D4CA90 /* mrbc.c */; };
+		0A199E8A208D83DF00D4CA90 /* libmruby_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A26B654203B4756002FE305 /* libmruby_core.a */; };
 		0A26B777203B4BD4002FE305 /* print.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A26B776203B4BD3002FE305 /* print.c */; };
 		0A26B780203B4BEC002FE305 /* array.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A26B77F203B4BEC002FE305 /* array.c */; };
 		0A5915BA203B627700831453 /* class.c in Sources */ = {isa = PBXBuildFile; fileRef = 0A591595203B626900831453 /* class.c */; };
@@ -42,9 +45,22 @@
 		0A5915E5203B64D700831453 /* parse.y in Sources */ = {isa = PBXBuildFile; fileRef = 0A5915DF203B64D600831453 /* parse.y */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		0A199E88208D836500D4CA90 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A26B63C203B4611002FE305 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A26B653203B4756002FE305;
+			remoteInfo = mruby_core;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0A199E72208D813A00D4CA90 /* error.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = error.cpp; sourceTree = "<group>"; };
 		0A199E73208D813A00D4CA90 /* vm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = vm.cpp; sourceTree = "<group>"; };
+		0A199E77208D830500D4CA90 /* mrbgem.rake */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mrbgem.rake; sourceTree = "<group>"; };
+		0A199E7A208D830500D4CA90 /* mrbc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mrbc.c; sourceTree = "<group>"; };
+		0A199E80208D834600D4CA90 /* mrbc */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mrbc; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A26B654203B4756002FE305 /* libmruby_core.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libmruby_core.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A26B73A203B4B32002FE305 /* error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = error.h; sourceTree = "<group>"; };
 		0A26B73C203B4B32002FE305 /* etc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = etc.c; sourceTree = "<group>"; };
@@ -93,6 +109,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0A199E7D208D834600D4CA90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A199E8A208D83DF00D4CA90 /* libmruby_core.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0A26B651203B4756002FE305 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -112,6 +136,32 @@
 			path = src;
 			sourceTree = "<group>";
 		};
+		0A199E76208D830500D4CA90 /* mruby-bin-mrbc */ = {
+			isa = PBXGroup;
+			children = (
+				0A199E77208D830500D4CA90 /* mrbgem.rake */,
+				0A199E78208D830500D4CA90 /* tools */,
+			);
+			name = "mruby-bin-mrbc";
+			path = "mruby/mrbgems/mruby-bin-mrbc";
+			sourceTree = "<group>";
+		};
+		0A199E78208D830500D4CA90 /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				0A199E79208D830500D4CA90 /* mrbc */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
+		0A199E79208D830500D4CA90 /* mrbc */ = {
+			isa = PBXGroup;
+			children = (
+				0A199E7A208D830500D4CA90 /* mrbc.c */,
+			);
+			path = mrbc;
+			sourceTree = "<group>";
+		};
 		0A26B63B203B4611002FE305 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				0A26B654203B4756002FE305 /* libmruby_core.a */,
+				0A199E80208D834600D4CA90 /* mrbc */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,6 +193,7 @@
 		0A26B738203B4B1B002FE305 /* mrbgems */ = {
 			isa = PBXGroup;
 			children = (
+				0A199E76208D830500D4CA90 /* mruby-bin-mrbc */,
 				0A5915D9203B64D600831453 /* mruby-compiler */,
 				0A26B778203B4BEC002FE305 /* mruby-array-ext */,
 				0A26B771203B4BD3002FE305 /* mruby-print */,
@@ -301,6 +353,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0A199E7F208D834600D4CA90 /* mrbc */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A199E84208D834600D4CA90 /* Build configuration list for PBXNativeTarget "mrbc" */;
+			buildPhases = (
+				0A199E7C208D834600D4CA90 /* Sources */,
+				0A199E7D208D834600D4CA90 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A199E89208D836500D4CA90 /* PBXTargetDependency */,
+			);
+			name = mrbc;
+			productName = mrbc;
+			productReference = 0A199E80208D834600D4CA90 /* mrbc */;
+			productType = "com.apple.product-type.tool";
+		};
 		0A26B653203B4756002FE305 /* mruby_core */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A26B655203B4756002FE305 /* Build configuration list for PBXNativeTarget "mruby_core" */;
@@ -327,6 +396,10 @@
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = "Kevin A. Mitchell";
 				TargetAttributes = {
+					0A199E7F208D834600D4CA90 = {
+						CreatedOnToolsVersion = 9.3;
+						ProvisioningStyle = Automatic;
+					};
 					0A26B653203B4756002FE305 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
@@ -346,11 +419,20 @@
 			projectRoot = "";
 			targets = (
 				0A26B653203B4756002FE305 /* mruby_core */,
+				0A199E7F208D834600D4CA90 /* mrbc */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0A199E7C208D834600D4CA90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A199E87208D835F00D4CA90 /* mrbc.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0A26B650203B4756002FE305 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -374,6 +456,7 @@
 				0A5915E3203B64D700831453 /* codegen.c in Sources */,
 				0A5915BF203B627700831453 /* backtrace.c in Sources */,
 				0A5915C0203B627700831453 /* codedump.c in Sources */,
+				0A199E7B208D830500D4CA90 /* mrbc.c in Sources */,
 				0A199E75208D813A00D4CA90 /* vm.cpp in Sources */,
 				0A5915CC203B627700831453 /* load.c in Sources */,
 				0A5915D0203B627700831453 /* range.c in Sources */,
@@ -393,7 +476,65 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0A199E89208D836500D4CA90 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0A26B653203B4756002FE305 /* mruby_core */;
+			targetProxy = 0A199E88208D836500D4CA90 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		0A199E85208D834600D4CA90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEPLOYMENT_LOCATION = YES;
+				DEVELOPMENT_TEAM = 72K3ELEL7K;
+				DSTROOT = "$(PROJECT_DIR)/mruby";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INSTALL_PATH = /bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SYMROOT = "$(PROJECT_DIR)/mruby/bin";
+				SYSTEM_HEADER_SEARCH_PATHS = mruby/include;
+				USER_HEADER_SEARCH_PATHS = "mruby/include mruby/mrbgems/mruby-compiler/core mruby/src";
+			};
+			name = Debug;
+		};
+		0A199E86208D834600D4CA90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEPLOYMENT_LOCATION = YES;
+				DEVELOPMENT_TEAM = 72K3ELEL7K;
+				DSTROOT = "$(PROJECT_DIR)/mruby";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INSTALL_PATH = /bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SYMROOT = "$(PROJECT_DIR)/mruby/bin";
+				SYSTEM_HEADER_SEARCH_PATHS = mruby/include;
+				USER_HEADER_SEARCH_PATHS = "mruby/include mruby/mrbgems/mruby-compiler/core mruby/src";
+			};
+			name = Release;
+		};
 		0A26B64B203B4611002FE305 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -540,6 +681,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0A199E84208D834600D4CA90 /* Build configuration list for PBXNativeTarget "mrbc" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A199E85208D834600D4CA90 /* Debug */,
+				0A199E86208D834600D4CA90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0A26B63F203B4611002FE305 /* Build configuration list for PBXProject "ios-ruby-embedded" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
